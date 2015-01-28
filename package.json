@@ -1,0 +1,28 @@
+{
+  "name": "phash-imagemagick",
+  "version": "0.0.0",
+  "description": "get and compare perceptual hashes (as computed by imagemagick)",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/standard-analytics/phash-imagemagick.git"
+  },
+  "keywords": [
+    "perceptual",
+    "hash",
+    "phash"
+  ],
+  "author": "sebastien ballesteros",
+  "license": "apache-v2",
+  "bugs": {
+    "url": "https://github.com/standard-analytics/phash-imagemagick/issues"
+  },
+  "homepage": "https://github.com/standard-analytics/phash-imagemagick",
+  "devDependencies": {
+    "async": "^0.9.0",
+    "mocha": "^2.1.0"
+  }
+}
