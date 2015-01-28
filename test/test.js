@@ -30,7 +30,7 @@ describe('pHash-imagemagick', function(){
   });
 
   // compare -metric phash figure1.png figure2.png NULL:
-  describe.only('pHash comparison', function(){
+  describe('pHash comparison', function(){
     var hashes;
 
     before(function(done) {

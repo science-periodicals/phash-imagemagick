@@ -93,8 +93,6 @@ exports.get = function(s, callback) {
       delete data.ppi;
     }
 
-    //see http://www.fmwconcepts.com/misc_tests/perceptual_hash_test_results_510/index.html
-
     callback(null, data);
   });
 
