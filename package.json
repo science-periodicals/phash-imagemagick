@@ -1,8 +1,9 @@
 {
   "name": "phash-imagemagick",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "get and compare perceptual hashes (as computed by imagemagick)",
   "main": "index.js",
+  "browser": "browser.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha test/test.js"
   },
