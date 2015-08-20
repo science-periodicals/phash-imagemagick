@@ -1,0 +1,10 @@
+machine:
+  node:
+    version: iojs-v2.3.3
+
+dependencies:
+  pre:
+    - sudo apt-get update; sudo apt-get install gcc g++ build-essential checkinstall
+    - wget http://www.imagemagick.org/download/ImageMagick-6.9.2-0.tar.gz
+    - tar xzvf ImageMagick-6.9.2-0.tar.gz
+    - cd ImageMagick-6.9.2-0/ && ./configure --prefix=/opt/imagemagick-6.9 && make && sudo checkinstall
