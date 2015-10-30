@@ -46,16 +46,16 @@ describe('pHash-imagemagick', function(){
     });
 
     it('should compare hashes for color images of different resolutions', function() {
-      for (var i=0; i<hashes.color.length; i++) {
-        for (var j=0; j<hashes.colorLow.length; j++) {
+      for (var i=0; i < hashes.color.length; i++) {
+        for (var j=0; j < hashes.colorLow.length; j++) {
           assert.equal(i===j, pHash.eq(hashes.color[i], hashes.colorLow[j]));
         }
       }
     });
 
     it('should compare hashes for gray images of different resolutions', function() {
-      for (var i=0; i<hashes.gray.length; i++) {
-        for (var j=0; j<hashes.grayLow.length; j++) {
+      for (var i=0; i < hashes.gray.length; i++) {
+        for (var j=0; j < hashes.grayLow.length; j++) {
           assert.equal(i===j, pHash.eq(hashes.gray[i], hashes.grayLow[j]));
         }
       }
