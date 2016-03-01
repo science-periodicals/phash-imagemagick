@@ -23,7 +23,8 @@ describe('pHash-imagemagick', function(){
   describe('pHash', function(){
     it('should get perceptual hash values', function(done){
       pHash.get(color[0], function(err, data){
-        assert(data.pHash.length === 42);
+        assert(data.pHash.length === 42*4);
+        assert.equal(data.pHash, '006100520470037004230398044704220885087406860629092808360061-030043101600421-0100430004008700058064801210870010600640061047804480499042904930441102708880745066609930896');
         done();
       });
     });
