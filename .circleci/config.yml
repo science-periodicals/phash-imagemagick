@@ -14,5 +14,5 @@ jobs:
           key: v1-im-{{ arch }}
           paths:
             - im
-     - run: npm install && npm update
-     - run: npm test
+      - run: npm install && npm update
+      - run: npm test
