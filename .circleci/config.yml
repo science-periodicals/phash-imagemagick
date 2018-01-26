@@ -1,10 +1,18 @@
-machine:
-  node:
-    version: iojs-v2.3.3
-
-dependencies:
-  pre:
-    - sudo apt-get update; sudo apt-get install gcc g++ build-essential checkinstall
-    - wget http://www.imagemagick.org/download/ImageMagick-6.9.2-0.tar.gz
-    - tar xzvf ImageMagick-6.9.2-0.tar.gz
-    - cd ImageMagick-6.9.2-0/ && ./configure --prefix=/opt/imagemagick-6.9 && make && sudo checkinstall
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y gcc g++ build-essential checkinstall
+      - restore_cache:
+          key: v1-im-{{ arch }}
+      - run: if [[ ! -e im ]]; then wget http://www.imagemagick.org/download/ImageMagick-6.9.2-0.tar.gz && mkdir im && tar xzvf ImageMagick-6.9.2-0.tar.gz -C im --strip-components=1 && (cd im && ./configure --prefix=/opt/imagemagick-6.9 && sudo make && sudo checkinstall); fi
+     - save_cache:
+         key: v1-im-{{ arch }}
+         paths:
+           - im
+     - run: npm install && npm update
+     - run: npm test
