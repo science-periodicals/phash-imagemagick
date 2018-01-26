@@ -1,5 +1,7 @@
 # phash-imagemagick
 
+[![CircleCI](https://circleci.com/gh/scienceai/phash-imagemagick.svg?style=svg)](https://circleci.com/gh/scienceai/phash-imagemagick)
+
 Get and compare [perceptual hashes](http://en.wikipedia.org/wiki/Perceptual_hashing) ([as computed by imagemagick](http://www.fmwconcepts.com/misc_tests/perceptual_hash_test_results_510/index.html)).
 
 
