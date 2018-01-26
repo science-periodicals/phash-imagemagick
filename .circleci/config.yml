@@ -9,7 +9,8 @@ jobs:
       - run: sudo apt-get install -y gcc g++ build-essential checkinstall
       - restore_cache:
           key: v1-im-{{ arch }}
-      - run: if [[ ! -e im ]]; then wget http://www.imagemagick.org/download/ImageMagick-6.9.2-0.tar.gz && mkdir im && tar xzvf ImageMagick-6.9.2-0.tar.gz -C im --strip-components=1 && (cd im && ./configure --prefix=/opt/imagemagick-6.9 && sudo make && sudo checkinstall); fi
+      - run: if [[ ! -e im ]]; then wget http://www.imagemagick.org/download/ImageMagick.tar.gz && mkdir im && tar xvzf ImageMagick.tar.gz -C im --strip-components=1 && (cd im && sudo ./configure && sudo make); fi
+      - run: (cd im && sudo make install && sudo ldconfig /usr/local/lib && sudo ln -sf /usr/local/bin/identify /usr/bin/identify)
       - save_cache:
           key: v1-im-{{ arch }}
           paths:
