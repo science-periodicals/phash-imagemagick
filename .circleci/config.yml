@@ -10,9 +10,9 @@ jobs:
       - restore_cache:
           key: v1-im-{{ arch }}
       - run: if [[ ! -e im ]]; then wget http://www.imagemagick.org/download/ImageMagick-6.9.2-0.tar.gz && mkdir im && tar xzvf ImageMagick-6.9.2-0.tar.gz -C im --strip-components=1 && (cd im && ./configure --prefix=/opt/imagemagick-6.9 && sudo make && sudo checkinstall); fi
-     - save_cache:
-         key: v1-im-{{ arch }}
-         paths:
-           - im
+      - save_cache:
+          key: v1-im-{{ arch }}
+          paths:
+            - im
      - run: npm install && npm update
      - run: npm test
