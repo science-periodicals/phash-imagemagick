@@ -5,7 +5,8 @@
   "main": "index.js",
   "browser": "browser.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/test.js"
+    "test": "./node_modules/.bin/mocha test/test.js",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,15 @@
   "homepage": "https://github.com/standard-analytics/phash-imagemagick",
   "devDependencies": {
     "async": "^0.9.0",
-    "mocha": "^2.1.0"
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "mocha": "^2.1.0",
+    "prettier": "^1.10.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --write",
+      "get add"
+    ]
   }
 }
