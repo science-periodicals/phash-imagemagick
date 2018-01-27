@@ -28,3 +28,9 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# IntelliJ files.
+.idea
+
+# Ignore package-lock.json for now.
+package-lock.json
