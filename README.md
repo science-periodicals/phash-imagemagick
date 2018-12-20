@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/scienceai/phash-imagemagick.svg?style=svg)](https://circleci.com/gh/scienceai/phash-imagemagick)
 
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 Get and compare [perceptual hashes](http://en.wikipedia.org/wiki/Perceptual_hashing) ([as computed by imagemagick](http://www.fmwconcepts.com/misc_tests/perceptual_hash_test_results_510/index.html)).
 
 

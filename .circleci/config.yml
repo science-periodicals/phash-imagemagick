@@ -6,14 +6,14 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
-      - run: sudo apt-get install -y gcc g++ build-essential checkinstall
+      - run: sudo apt-get install -y imagemagick
       - restore_cache:
-          key: v1-im-{{ arch }}
-      - run: if [[ ! -e im ]]; then wget http://www.imagemagick.org/download/ImageMagick.tar.gz && mkdir im && tar xvzf ImageMagick.tar.gz -C im --strip-components=1 && (cd im && sudo ./configure && sudo make); fi
-      - run: (cd im && sudo make install && sudo ldconfig /usr/local/lib && sudo ln -sf /usr/local/bin/identify /usr/bin/identify)
+          keys:
+            - v1-node_modules-{{ checksum "package.json" }}
+            - v1-node_modules-
+      - run: npm install && npm rebuild
       - save_cache:
-          key: v1-im-{{ arch }}
+          key: v1-node_modules-{{ checksum "package.json" }}
           paths:
-            - im
-      - run: npm install && npm update
+            - node_modules
       - run: npm test
