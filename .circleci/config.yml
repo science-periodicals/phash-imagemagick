@@ -1,19 +1,57 @@
 version: 2
 jobs:
-  build:
+  test:
+    working_directory: ~/phash-imagemagick
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:dubnium
     steps:
       - checkout
+      - run: echo '//registry.npmjs.org/:_authToken='$NPM_PRIVATE_AUTH_TOKEN > $HOME/.npmrc
       - run: sudo apt-get update
       - run: sudo apt-get install -y imagemagick
       - restore_cache:
           keys:
-            - v1-node_modules-{{ checksum "package.json" }}
+            - v1-node_modules-{{ checksum "package-lock.json" }}
             - v1-node_modules-
-      - run: npm install && npm rebuild
+      - run:
+          command: npm install
+          no_output_timeout: 5m
       - save_cache:
-          key: v1-node_modules-{{ checksum "package.json" }}
+          key: v1-node_modules-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run: npm test
+      - persist_to_workspace:
+          root: ~/phash-imagemagick
+          paths: .
+
+  publish:
+    working_directory: ~/phash-imagemagick
+    docker:
+      - image: circleci/node:dubnium
+    steps:
+      - attach_workspace:
+          at: ~/phash-imagemagick
+      - run:
+          name: Authenticate with registry
+          command: echo '//registry.npmjs.org/:_authToken='$NPM_PRIVATE_AUTH_TOKEN > $HOME/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  test-publish:
+    jobs:
+      - test:
+          filters:  # required since `publish` has tag filters AND requires `test`
+            tags:
+              only: /.*/
+      - publish:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/

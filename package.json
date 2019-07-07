@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/standard-analytics/phash-imagemagick.git"
+    "url": "https://github.com/science-periodicals/phash-imagemagick.git"
   },
   "keywords": [
     "perceptual",
@@ -18,14 +18,21 @@
     "phash"
   ],
   "author": "sebastien ballesteros",
-  "license": "apache-v2",
-  "bugs": {
-    "url": "https://github.com/standard-analytics/phash-imagemagick/issues"
+  "prettier": {
+    "singleQuote": true
   },
-  "homepage": "https://github.com/standard-analytics/phash-imagemagick",
+  "license": "apache-v2",
+  "eslintConfig": {
+    "extends": "@scipe"
+  },
+  "bugs": {
+    "url": "https://github.com/science-periodicals/phash-imagemagick/issues"
+  },
+  "homepage": "https://github.com/science-periodicals/phash-imagemagick",
   "devDependencies": {
-    "async": "^2.6.1",
-    "mocha": "^5.2.0",
-    "prettier": "^1.15.3"
+    "@scipe/eslint-config": "^1.0.0",
+    "async": "^3.1.0",
+    "mocha": "^6.1.4",
+    "prettier": "^1.18.2"
   }
 }

@@ -31,6 +31,3 @@ node_modules
 
 # IntelliJ files.
 .idea
-
-# Ignore package-lock.json for now.
-package-lock.json
